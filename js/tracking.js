@@ -15,3 +15,12 @@ function redirectToTracking() {
     
     return false; // Prevent form submission
 }
+
+window.onload = function() {
+    // Get the tracking number from the URL (example: track_12345.html)
+    const url = window.location.pathname;
+    const trackingNumber = url.substring(url.lastIndexOf("_") + 1, url.lastIndexOf("."));
+    
+    // Set the tracking number on the page
+    document.getElementById("tracking-number").textContent = trackingNumber;
+};

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Fortis Vault Services &mdash; Tracking</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Free-Template.co" />
+    <link rel="shortcut icon" href="ftco-32x32.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,700|Oswald:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/aos.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Remove preloader after page load */
+        .loader {
+            display: none;
+        }
+
+        /* Styles for centering and background */
+        .tracking-container {
+            background-color: #fafafa; /* Lighter gray */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;  /* Increased width for better layout */
+            margin: auto;
+            margin-top: 120px; /* Adjust for header height */
+            text-align: center;
+        }
+        .tracking-container h1, .tracking-container p {
+            color: #333;
+        }
+
+        .ftco-cover-1 {
+            background-image: url('images/T1.jpg');
+            height: 100vh;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Adjusting the input field and button layout */
+        .form-group {
+            display: flex;
+            gap: 10px;
+            flex-direction: column; /* Stack vertically for mobile screens */
+        }
+
+        /* Make sure the menu stays at the top for large screens */
+        @media (max-width: 991px) {
+            .site-navbar {
+                display: none;
+            }
+        }
+
+        /* Make sure the content isn't scrolled */
+        .site-wrap {
+            overflow: hidden;
+        }
+
+        /* Adjust for better appearance */
+        .site-navbar {
+            z-index: 1000;
+        }
+
+        /* Add styles for mobile responsiveness */
+        @media (max-width: 768px) {
+            .tracking-container {
+                padding: 20px;
+                width: 90%; /* Make the container smaller on mobile */
+            }
+            .form-group {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .site-navigation ul {
+                flex-direction: column;
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Preloader (hidden after page load) -->
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Site wrap -->
+    <div class="site-wrap" id="home-section">
+
+        <!-- Header -->
+        <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center position-relative">
+                    <div class="site-logo">
+                        <a href="index.html" class="text-black"><span class="text-primary">Fortis Vault</span></a>
+                    </div>
+                    <div class="col-12">
+                        <nav class="site-navigation text-right ml-auto" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                                <li><a href="index.html" class="nav-link">Home</a></li>
+                                <li><a href="index.html#services-section" class="nav-link">Services</a></li>
+                                <li><a href="vault.html" class="nav-link">Vault</a></li>
+                                <li><a href="index.html#contact-section" class="nav-link">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="toggle-button d-inline-block d-lg-none">
+                        <a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tracking Section -->
+        <div class="tracking-container">
+            <h1>Track Your Order</h1>
+            <p>Enter your tracking number below:</p>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Tracking Number">
+                <button class="btn btn-primary">Track</button>
+            </div>
+        </div>
+
+    </div> <!-- .site-wrap -->
+
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

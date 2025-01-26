@@ -26,20 +26,7 @@
         </div>
     </div>
 
-    <!-- JavaScript for Redirection -->
-    <script>
-        function redirectToTracking() {
-            // Get the tracking number entered by the user
-            const trackingNumber = document.getElementById("trackingNumber").value;
-            
-            // Construct the URL for the specific tracking page
-            const trackingPageUrl = 'tracking_' + trackingNumber + '.html';
-            
-            // Redirect the user to the specific tracking page
-            window.location.href = trackingPageUrl;
-            
-            return false; // Prevent the form from submitting normally
-        }
-    </script>
+    <!-- Link to the JavaScript file -->
+    <script src="js/tracking.js"></script>
 </body>
 </html>

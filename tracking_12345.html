@@ -17,7 +17,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1200px; /* Increased width for better layout */
             margin: 40px auto;
             padding: 30px;
             background: #fff;
@@ -82,34 +82,7 @@
             font-weight: 600;
         }
 
-        /* Status List */
-        .status-details {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 20px;
-        }
-
-        .status-details li {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 16px;
-            font-weight: 500;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 10px;
-        }
-
-        .status-details .status-location {
-            font-weight: 600;
-            color: #007bff;
-        }
-
-        .status-details .status-date {
-            font-size: 14px;
-            color: #b2b2b2;
-        }
-
+        /* Footer */
         .footer {
             margin-top: 40px;
             text-align: center;
@@ -129,13 +102,53 @@
         /* Responsive design */
         @media (max-width: 768px) {
             .container {
-                padding: 20px;
+                padding: 15px;
+                margin: 20px;
             }
+
             h1 {
-                font-size: 24px;
+                font-size: 22px;
+                margin-bottom: 15px;
             }
+
             .status-header {
                 font-size: 20px;
+            }
+
+            .status-table th, .status-table td {
+                padding: 10px;
+            }
+
+            .status-table {
+                font-size: 14px;
+            }
+
+            .footer {
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 10px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .status-header {
+                font-size: 18px;
+            }
+
+            .status-table th, .status-table td {
+                padding: 8px;
+            }
+
+            .footer {
+                margin-top: 20px;
             }
         }
     </style>
@@ -143,7 +156,7 @@
 
 <body>
     <div class="container">
-        <h1>Tracking Information for <span id="trackingID">Loading...</span></h1>
+        <h1>Tracking Information for <span id="tracking-number">12345</span></h1>
 
         <!-- Progress Bar -->
         <div class="progress">
@@ -181,7 +194,7 @@
         const trackingNumber = urlParams.get('trackingNumber') || '12345';
 
         // Display the tracking number in the header
-        document.getElementById('trackingID').innerText = trackingNumber;
+        document.getElementById('tracking-number').innerText = trackingNumber;
 
         // Tracking details array with additional information
         const trackingDetails = [
@@ -201,24 +214,26 @@
 
         // Set the progress bar based on the last tracking point
         const progressBar = document.getElementById('progressBar');
-        progressBar.style.width = trackingDetails[trackingDetails.length - 1].progress + '%';
-        progressBar.innerText = trackingDetails[trackingDetails.length - 1].progress + '%';
+        const lastStatus = trackingDetails[trackingDetails.length - 1];
+        progressBar.style.width = `${lastStatus.progress}%`;
+        progressBar.innerText = `${lastStatus.progress}%`;
+        progressBar.setAttribute('aria-valuenow', lastStatus.progress);
 
-        // Generate the status table dynamically
+        // Insert the tracking details into the table
         const statusList = document.getElementById('statusList');
         trackingDetails.forEach(detail => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${detail.status}</td>
-                <td>${detail.location}</td>
-                <td>${detail.date}</td>
-                <td>${detail.time}</td>
-                <td>${detail.transport}</td>
-                <td>${detail.voyageNo}</td>
+            const row = `
+                <tr>
+                    <td>${detail.status}</td>
+                    <td>${detail.location}</td>
+                    <td>${detail.date}</td>
+                    <td>${detail.time}</td>
+                    <td>${detail.transport}</td>
+                    <td>${detail.voyageNo}</td>
+                </tr>
             `;
-            statusList.appendChild(row);
+            statusList.insertAdjacentHTML('beforeend', row);
         });
     </script>
 </body>
-
 </html>

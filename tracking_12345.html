@@ -1,76 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tracking Information</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Page Layout */
+        /* Global Styles */
         body {
             font-family: 'Poppins', sans-serif;
-            background: #f4f6f9;
-            padding: 0;
             margin: 0;
+            padding: 0;
+            background-color: #f7f8fa;
+            color: #333;
         }
 
         .container {
             max-width: 900px;
             margin: 40px auto;
-            background: #fff;
             padding: 30px;
+            background: #fff;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
+            font-size: 28px;
             font-weight: 600;
-            color: #333;
+            color: #4B4F58;
+            margin-bottom: 20px;
         }
 
+        /* Tracking Status Section */
         .tracking-status {
             margin-top: 30px;
-            padding: 20px;
-            background: #f9fafb;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
         }
 
         .status-header {
+            font-size: 22px;
             font-weight: 600;
-            color: #444;
-            margin-bottom: 15px;
+            color: #2c3e50;
+            margin-bottom: 20px;
         }
 
+        /* Progress Bar */
+        .progress {
+            height: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar {
+            width: 0;
+            background-color: #4caf50;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+
+        /* Status Table */
+        .status-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .status-table th, .status-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .status-table th {
+            background-color: #f4f4f4;
+            font-weight: 600;
+        }
+
+        /* Status List */
         .status-details {
             list-style: none;
             padding-left: 0;
+            margin-top: 20px;
         }
 
         .status-details li {
-            margin-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             font-size: 16px;
-            color: #555;
+            font-weight: 500;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .status-details .status-location {
+            font-weight: 600;
+            color: #007bff;
         }
 
         .status-details .status-date {
             font-size: 14px;
-            color: #999;
-        }
-
-        .status-details .status-location {
-            font-weight: bold;
-            color: #007bff;
+            color: #b2b2b2;
         }
 
         .footer {
+            margin-top: 40px;
             text-align: center;
             padding: 20px;
-            background-color: #f4f6f9;
-            margin-top: 40px;
+            background-color: #f7f8fa;
         }
 
         .footer a {
@@ -81,19 +125,49 @@
         .footer a:hover {
             text-decoration: underline;
         }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .status-header {
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Tracking Information for <span id="trackingID">12345</span></h1>
+        <h1>Tracking Information for <span id="trackingID">Loading...</span></h1>
+
+        <!-- Progress Bar -->
+        <div class="progress">
+            <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+        </div>
 
         <!-- Tracking Status -->
         <div class="tracking-status">
             <div class="status-header">Package Status</div>
-            <ul class="status-details" id="statusList">
-                <!-- Dynamic content will be inserted here -->
-            </ul>
+            <table class="status-table" id="statusTable">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Place of Activity</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Transport</th>
+                        <th>Voyage No.</th>
+                    </tr>
+                </thead>
+                <tbody id="statusList">
+                    <!-- Dynamic content will be inserted here -->
+                </tbody>
+            </table>
         </div>
 
         <div class="footer">
@@ -104,25 +178,45 @@
     <script>
         // Fetch the tracking number from the URL
         const urlParams = new URLSearchParams(window.location.search);
-        const trackingNumber = urlParams.get('trackingNumber');
+        const trackingNumber = urlParams.get('trackingNumber') || '12345';
 
         // Display the tracking number in the header
         document.getElementById('trackingID').innerText = trackingNumber;
 
-        // Fetch tracking details (this can be dynamically fetched using an API in a real implementation)
+        // Tracking details array with additional information
         const trackingDetails = [
-            { location: "New York, NY", status: "Package received", date: "2023-01-01 08:00 AM" },
-            { location: "Chicago, IL", status: "In transit", date: "2023-01-02 12:30 PM" },
-            { location: "Los Angeles, CA", status: "Out for delivery", date: "2023-01-03 09:00 AM" },
-            { location: "Los Angeles, CA", status: "Delivered", date: "2023-01-03 12:45 PM" },
+            { status: "Gate Out", location: "MONTREAL, QC", date: "2024-10-11", time: "17:58", transport: "Truck", voyageNo: "", progress: 10 },
+            { status: "Arrival in", location: "MONTREAL, QC", date: "2024-10-15", time: "06:44", transport: "Truck", voyageNo: "", progress: 20 },
+            { status: "Loaded", location: "MONTREAL, QC", date: "2024-10-20", time: "08:43", transport: "SPIRIT OF SYDNEY", voyageNo: "01E42", progress: 40 },
+            { status: "Vessel Departed", location: "MONTREAL, QC", date: "2024-10-21", time: "06:18", transport: "SPIRIT OF SYDNEY", voyageNo: "01E42", progress: 50 },
+            { status: "Vessel Arrived", location: "LE HAVRE", date: "2024-11-07", time: "06:24", transport: "SPIRIT OF SYDNEY", voyageNo: "01E42", progress: 60 },
+            { status: "Discharged", location: "LE HAVRE", date: "2024-11-07", time: "08:10", transport: "SPIRIT OF SYDNEY", voyageNo: "01E42", progress: 70 },
+            { status: "Loaded", location: "LE HAVRE", date: "2024-11-09", time: "12:47", transport: "SPIRIT OF SINGAPORE", voyageNo: "2445S", progress: 80 },
+            { status: "Vessel Departed", location: "LE HAVRE", date: "2024-11-09", time: "15:00", transport: "SPIRIT OF SINGAPORE", voyageNo: "2445S", progress: 90 },
+            { status: "Vessel Arrived", location: "TEMA", date: "2024-11-25", time: "03:06", transport: "SPIRIT OF SINGAPORE", voyageNo: "2445S", progress: 95 },
+            { status: "Discharged", location: "TEMA", date: "2024-11-26", time: "01:44", transport: "SPIRIT OF SINGAPORE", voyageNo: "2445S", progress: 98 },
+            { status: "Departure from", location: "TEMA", date: "2024-11-26", time: "03:13", transport: "Truck", voyageNo: "", progress: 100 },
+            { status: "Arrival in", location: "TEMA", date: "2024-12-30", time: "16:34", transport: "Truck", voyageNo: "", progress: 100 },
         ];
 
-        // Generate the status list dynamically
+        // Set the progress bar based on the last tracking point
+        const progressBar = document.getElementById('progressBar');
+        progressBar.style.width = trackingDetails[trackingDetails.length - 1].progress + '%';
+        progressBar.innerText = trackingDetails[trackingDetails.length - 1].progress + '%';
+
+        // Generate the status table dynamically
         const statusList = document.getElementById('statusList');
         trackingDetails.forEach(detail => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<span class="status-location">${detail.location}</span> - ${detail.status} <span class="status-date">${detail.date}</span>`;
-            statusList.appendChild(listItem);
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${detail.status}</td>
+                <td>${detail.location}</td>
+                <td>${detail.date}</td>
+                <td>${detail.time}</td>
+                <td>${detail.transport}</td>
+                <td>${detail.voyageNo}</td>
+            `;
+            statusList.appendChild(row);
         });
     </script>
 </body>

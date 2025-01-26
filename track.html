@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Fortis Vault Services &mdash; Tracking</title>
     <meta charset="utf-8">
@@ -35,39 +36,53 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 600px;
             margin: auto;
-            margin-top: 10%;
+            margin-top: 120px; /* Adjust for header height */
             text-align: center;
         }
         .tracking-container h1, .tracking-container p {
             color: #333;
         }
+
         .ftco-cover-1 {
             background-image: url('images/ship.jpg');
             height: 100vh;
             background-size: cover;
             display: flex;
             align-items: center;
-            justify-content: center; /* Centers the container */
-            position: fixed; /* Keeps the main container fixed */
+            justify-content: center;
+            position: fixed;
             width: 100%;
             top: 0;
             left: 0;
-            z-index: -1; /* Ensure other content goes on top */
+            z-index: -1;
         }
+
         /* Adjusting the input field and button layout */
         .form-group {
             display: flex;
             gap: 10px;
         }
 
-        /* Make sure menu is at the top for large screens only */
+        /* Make sure the menu stays at the top for large screens */
         @media (max-width: 991px) {
             .site-navbar {
                 display: none;
             }
         }
+
+        /* Make sure the content isn't scrolled */
+        .site-wrap {
+            overflow: hidden;
+        }
+
+        /* Adjust for better appearance */
+        .site-navbar {
+            z-index: 1000;
+        }
+
     </style>
 </head>
+
 <body>
 
     <!-- Preloader (hidden after page load) -->
@@ -91,7 +106,7 @@
                         <nav class="site-navigation text-right ml-auto" role="navigation">
                             <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                                 <li><a href="index.html" class="nav-link">Home</a></li>
-                                <li><a href="index.html#services-section" class="nav-link">Services</a>
+                                <li><a href="index.html#services-section" class="nav-link">Services</a></li>
                                 <li><a href="vault.html" class="nav-link">Vault</a></li>
                                 <li><a href="index.html#contact-section" class="nav-link">Contact</a></li>
                             </ul>
@@ -126,9 +141,10 @@
 
     <script>
         // Remove loader after page load
-        window.onload = function() {
+        window.onload = function () {
             document.querySelector('.loader').style.display = 'none';
         };
     </script>
 </body>
+
 </html>

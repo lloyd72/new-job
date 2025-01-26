@@ -184,7 +184,7 @@
 
 <body>
     <div class="container">
-        <h1>Tracking Information for <span id="trackingID">Loading...</span></h1>
+        <h1>Tracking Information for <span id="tracking-number">UACU5470679</span></h1>
 
         <!-- Progress Bar -->
         <div class="progress">
@@ -219,7 +219,7 @@
     <script>
         // Fetch the tracking number from the URL
         const urlParams = new URLSearchParams(window.location.search);
-        const trackingNumber = urlParams.get('trackingNumber') || '12345';
+        const trackingNumber = urlParams.get('trackingNumber') || 'UACU5470679';
 
         // Display the tracking number in the header
         document.getElementById('trackingID').innerText = trackingNumber;

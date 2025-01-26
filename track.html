@@ -48,6 +48,11 @@
             display: flex;
             align-items: center;
             justify-content: center; /* Centers the container */
+            position: fixed; /* Keeps the main container fixed */
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Ensure other content goes on top */
         }
         /* Adjusting the input field and button layout */
         .form-group {
@@ -74,25 +79,6 @@
 
     <!-- Site wrap -->
     <div class="site-wrap" id="home-section">
-
-        <!-- Top Bar -->
-        <div class="top-bar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <a href="mailto:info@fortisvaultservices.com" class=""><span class="mr-2 icon-envelope-open-o"></span> info@fortisvaultservices.com</a>
-                        <span class="mx-md-2 d-inline-block"></span>
-                        <a href="tel:+123456789101" class=""><span class="mr-2 icon-phone"></span> 1+ (234) 5678 9101</a>
-
-                        <div class="float-right">
-                            <a href="#" class=""><span class="mr-2 icon-twitter"></span> Twitter</a>
-                            <span class="mx-md-2 d-inline-block"></span>
-                            <a href="#" class=""><span class="mr-2 icon-facebook"></span> Facebook</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Header -->
         <header class="site-navbar js-sticky-header site-navbar-target" role="banner">

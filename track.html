@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortis Vault Tracking</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Fortis Vault Services &mdash; Tracking</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Free-Template.co" />
+    <link rel="shortcut icon" href="ftco-32x32.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,700|Oswald:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/aos.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
     <style>
         /* Styles for centering and background */
         .tracking-container {
-            background-color: #f0f0f0;
+            background-color: #fafafa; /* Lighter gray */
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -26,26 +42,87 @@
             background-size: cover;
             display: flex;
             align-items: center;
+            justify-content: center; /* Centers the container */
+        }
+        /* Adjusting the input field and button layout */
+        .form-group {
+            display: flex;
+            gap: 10px;
         }
     </style>
 </head>
-<body>
-    <div class="ftco-cover-1">
-        <div class="tracking-container">
-            <h1>Fortis Vault Services</h1>
-            <p class="mb-5">Tracking Number/BL Number/Receipt Number</p>
-            
-            <!-- Tracking Form -->
-            <form onsubmit="return redirectToTracking()">
-                <div class="form-group d-flex">
-                    <input type="text" id="trackingNumber" class="form-control" placeholder="Enter your tracking number" required style="margin-right: 10px;">
-                    <input type="submit" class="btn btn-primary text-white px-4" value="Track Now">
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <div class="site-wrap" id="home-section">
+
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <a href="mailto:info@fortisvaultservices.com" class=""><span class="mr-2 icon-envelope-open-o"></span> info@fortisvaultservices.com</a>
+                        <span class="mx-md-2 d-inline-block"></span>
+                        <a href="tel:+123456789101" class=""><span class="mr-2 icon-phone"></span> 1+ (234) 5678 9101</a>
+
+                        <div class="float-right">
+                            <a href="#" class=""><span class="mr-2 icon-twitter"></span> Twitter</a>
+                            <span class="mx-md-2 d-inline-block"></span>
+                            <a href="#" class=""><span class="mr-2 icon-facebook"></span> Facebook</a>
+                        </div>
+                    </div>
                 </div>
-            </form>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center position-relative">
+                    <div class="site-logo">
+                        <a href="index.html" class="text-black"><span class="text-primary">Fortis Vault</span></a>
+                    </div>
+                    <div class="col-12">
+                        <nav class="site-navigation text-right ml-auto" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                                <li><a href="#home-section" class="nav-link">Home</a></li>
+                                <li><a href="#services-section" class="nav-link">Services</a></li>
+                                <li><a href="vault.html" class="nav-link">Vault</a></li>
+                                <li><a href="track.html" class="nav-link">Track Your Consignment</a></li>
+                                <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tracking Form Section -->
+        <div class="ftco-cover-1">
+            <div class="tracking-container">
+                <h1>Fortis Vault Services</h1>
+                <p class="mb-5">Tracking Number/BL Number/Receipt Number</p>
+
+                <!-- Tracking Form -->
+                <form onsubmit="return redirectToTracking()">
+                    <div class="form-group">
+                        <input type="text" id="trackingNumber" class="form-control" placeholder="Enter your tracking number" required>
+                        <input type="submit" class="btn btn-primary text-white px-4" value="Track Now">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
     <!-- Link to the JavaScript file -->
     <script src="js/tracking.js"></script>
+
 </body>
 </html>

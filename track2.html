@@ -80,6 +80,21 @@
             z-index: 1000;
         }
 
+                /* Add styles for mobile responsiveness */
+        @media (max-width: 768px) {
+            .tracking-container {
+                padding: 20px;
+                width: 90%; /* Make the container smaller on mobile */
+            }
+            .form-group {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .site-navigation ul {
+                flex-direction: column;
+                padding-left: 0;
+            }
+        }
     </style>
 </head>
 

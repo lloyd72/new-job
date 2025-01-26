@@ -1,15 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tracking 12345</title>
+    <title>Tracking Information</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Page Layout */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f6f9;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .tracking-status {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .status-header {
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        .status-details {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .status-details li {
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .status-details .status-date {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .status-details .status-location {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f6f9;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body>
     <div class="container">
-        <h1>Tracking Information for 12345</h1>
-        <p>Your package is currently in transit and expected to arrive on time.</p>
+        <h1>Tracking Information for <span id="trackingID">12345</span></h1>
+
+        <!-- Tracking Status -->
+        <div class="tracking-status">
+            <div class="status-header">Package Status</div>
+            <ul class="status-details" id="statusList">
+                <!-- Dynamic content will be inserted here -->
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>Need help? <a href="#">Contact Us</a></p>
+        </div>
     </div>
+
+    <script>
+        // Fetch the tracking number from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const trackingNumber = urlParams.get('trackingNumber');
+
+        // Display the tracking number in the header
+        document.getElementById('trackingID').innerText = trackingNumber;
+
+        // Fetch tracking details (this can be dynamically fetched using an API in a real implementation)
+        const trackingDetails = [
+            { location: "New York, NY", status: "Package received", date: "2023-01-01 08:00 AM" },
+            { location: "Chicago, IL", status: "In transit", date: "2023-01-02 12:30 PM" },
+            { location: "Los Angeles, CA", status: "Out for delivery", date: "2023-01-03 09:00 AM" },
+            { location: "Los Angeles, CA", status: "Delivered", date: "2023-01-03 12:45 PM" },
+        ];
+
+        // Generate the status list dynamically
+        const statusList = document.getElementById('statusList');
+        trackingDetails.forEach(detail => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<span class="status-location">${detail.location}</span> - ${detail.status} <span class="status-date">${detail.date}</span>`;
+            statusList.appendChild(listItem);
+        });
+    </script>
 </body>
+
 </html>

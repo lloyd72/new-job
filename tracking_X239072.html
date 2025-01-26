@@ -16,6 +16,34 @@
             color: #333;
         }
 
+        /* Header for logo and menu */
+        .header {
+            padding: 20px;
+            background-color: #4B4F58;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Header Logo */
+        .header .logo {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* Primary Menu */
+        .header .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header .menu a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Container styles */
         .container {
             max-width: 1200px; /* Increased width for better layout */
             margin: 40px auto;
@@ -126,6 +154,11 @@
             .footer {
                 margin-top: 30px;
             }
+
+            /* Remove container on small screens */
+            .container {
+                display: none;
+            }
         }
 
         @media (max-width: 576px) {
@@ -155,6 +188,16 @@
 </head>
 
 <body>
+    <div class="header">
+        <div class="logo">Your Logo</div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
     <div class="container">
         <h1>Tracking Information for <span id="tracking-number">X239072</span></h1>
 
@@ -207,32 +250,32 @@
             { status: "Loaded", location: "LE HAVRE", date: "2024-11-09", time: "12:47", transport: "SPIRIT OF SINGAPORE", voyageNo: "2445S", progress: 80 },
             { status: "Vessel Departed", location: "LE HAVRE", date: "2024-11-09", time: "15:00", transport: "SPIRIT OF SINGAPORE", voyageNo: "2445S", progress: 90 },
             { status: "Vessel Arrived", location: "TEMA", date: "2024-11-25", time: "03:06", transport: "SPIRIT OF SINGAPORE", voyageNo: "2445S", progress: 95 },
-            { status: "Discharged", location: "TEMA", date: "2024-11-26", time: "01:44", transport: "SPIRIT OF SINGAPORE", voyageNo: "2445S", progress: 98 },
-            { status: "Departure from", location: "TEMA", date: "2024-11-26", time: "03:13", transport: "Truck", voyageNo: "", progress: 100 },
-            { status: "Arrival in", location: "TEMA", date: "2024-12-30", time: "16:34", transport: "Truck", voyageNo: "", progress: 100 },
+            { status: "Discharged", location: "TEMA", date: "2024-11-26", time: "09:10", transport: "SPIRIT OF SINGAPORE", voyageNo: "2445S", progress: 100 }
         ];
 
-        // Set the progress bar based on the last tracking point
+        // Update the progress bar and status table
         const progressBar = document.getElementById('progressBar');
-        const lastStatus = trackingDetails[trackingDetails.length - 1];
-        progressBar.style.width = `${lastStatus.progress}%`;
-        progressBar.innerText = `${lastStatus.progress}%`;
-        progressBar.setAttribute('aria-valuenow', lastStatus.progress);
-
-        // Insert the tracking details into the table
         const statusList = document.getElementById('statusList');
+
         trackingDetails.forEach(detail => {
-            const row = `
-                <tr>
-                    <td>${detail.status}</td>
-                    <td>${detail.location}</td>
-                    <td>${detail.date}</td>
-                    <td>${detail.time}</td>
-                    <td>${detail.transport}</td>
-                    <td>${detail.voyageNo}</td>
-                </tr>
+            // Create a table row for each tracking status
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${detail.status}</td>
+                <td>${detail.location}</td>
+                <td>${detail.date}</td>
+                <td>${detail.time}</td>
+                <td>${detail.transport}</td>
+                <td>${detail.voyageNo || '-'}</td>
             `;
-            statusList.insertAdjacentHTML('beforeend', row);
+            statusList.appendChild(row);
+
+            // Update the progress bar
+            if (detail.progress > parseInt(progressBar.getAttribute('aria-valuenow'))) {
+                progressBar.style.width = detail.progress + '%';
+                progressBar.setAttribute('aria-valuenow', detail.progress);
+                progressBar.innerText = detail.progress + '%';
+            }
         });
     </script>
 </body>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,277 +7,147 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <style>
-        /* Global Styles */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f7f8fa;
-            color: #333;
-        }
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f8fa;
+    color: #333;
+}
 
-        /* Header for logo and menu */
-        .header {
-            padding: 20px;
-            background-color: #ffffff;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.container {
+    max-width: 1200px; /* Increased width for better layout */
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
 
-        /* Header Logo */
-        .header .logo {
-            font-size: 24px;
-            font-weight: 600;
-        }
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #4B4F58;
+    margin-bottom: 20px;
+}
 
-        /* Primary Menu */
-        .header .menu {
-            display: flex;
-            gap: 20px;
-        }
+/* Tracking Status Section */
+.tracking-status {
+    margin-top: 30px;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
 
-        .header .menu a {
-            color: white;
-            text-decoration: none;
-        }
+.status-header {
+    font-size: 22px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
 
-        /* Container styles */
-        .container {
-            max-width: 1200px; /* Increased width for better layout */
-            margin: 40px auto;
-            padding: 30px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
+/* Progress Bar */
+.progress {
+    height: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
 
-        h1 {
-            font-size: 28px;
-            font-weight: 600;
-            color: #4B4F58;
-            margin-bottom: 20px;
-        }
+.progress-bar {
+    width: 0;
+    background-color: #4caf50;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+}
 
-        /* Tracking Status Section */
-        .tracking-status {
-            margin-top: 30px;
-            padding: 25px;
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
+/* Status Table */
+.status-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
 
-        .status-header {
-            font-size: 22px;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 20px;
-        }
+.status-table th, .status-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
 
-        /* Progress Bar */
-        .progress {
-            height: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
+.status-table th {
+    background-color: #f4f4f4;
+    font-weight: 600;
+}
 
-        .progress-bar {
-            width: 0;
-            background-color: #4caf50;
-            text-align: center;
-            color: white;
-            font-weight: bold;
-            border-radius: 10px;
-        }
+/* Footer */
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    padding: 20px;
+    background-color: #f7f8fa;
+}
 
-        /* Status Table */
-        .status-table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
+.footer a {
+    color: #007bff;
+    text-decoration: none;
+}
 
-        .status-table th, .status-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #f0f0f0;
-        }
+.footer a:hover {
+    text-decoration: underline;
+}
 
-        .status-table th {
-            background-color: #f4f4f4;
-            font-weight: 600;
-        }
+/* Responsive design */
+@media (max-width: 768px) {
+    /* Hide the container for screens smaller than 768px */
+    .container {
+        display: none;
+    }
 
-        /* Footer */
-        .footer {
-            margin-top: 40px;
-            text-align: center;
-            padding: 20px;
-            background-color: #f7f8fa;
-        }
+    h1 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
 
-        .footer a {
-            color: #007bff;
-            text-decoration: none;
-        }
+    .status-header {
+        font-size: 20px;
+    }
 
-        .footer a:hover {
-            text-decoration: underline;
-        }
+    .status-table th, .status-table td {
+        padding: 10px;
+    }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-                margin: 20px;
-            }
+    .status-table {
+        font-size: 14px;
+    }
 
-            h1 {
-                font-size: 22px;
-                margin-bottom: 15px;
-            }
+    .footer {
+        margin-top: 30px;
+    }
+}
 
-            .status-header {
-                font-size: 20px;
-            }
+@media (max-width: 576px) {
+    /* Hide the container for screens smaller than 576px */
+    .container {
+        display: none;
+    }
 
-            .status-table th, .status-table td {
-                padding: 10px;
-            }
+    h1 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
 
-            .status-table {
-                font-size: 14px;
-            }
+    .status-header {
+        font-size: 18px;
+    }
 
-            .footer {
-                margin-top: 30px;
-            }
+    .status-table th, .status-table td {
+        padding: 8px;
+    }
 
-            /* Remove container on small screens */
-            .container {
-                display: none;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                padding: 10px;
-                margin: 10px;
-            }
-
-            h1 {
-                font-size: 20px;
-                margin-bottom: 10px;
-            }
-
-            .status-header {
-                font-size: 18px;
-            }
-
-            .status-table th, .status-table td {
-                padding: 8px;
-            }
-
-            .footer {
-                margin-top: 20px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <div class="header">
-        <div class="site-logo">
-            <a href="index.html" class="text-black"><span class="text-primary">Fortis Vault</a>
-        <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="vault.html">vault</a>
-            <a href="index.html#service-section">Services</a>
-            <a href="index.html#contact-section">Contact</a>
-        </div>
-    </div>
-
-    <div class="container">
-        <h1>Tracking Information for <span id="tracking-number">X239072</span></h1>
-
-        <!-- Progress Bar -->
-        <div class="progress">
-            <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-        </div>
-
-        <!-- Tracking Status -->
-        <div class="tracking-status">
-            <div class="status-header">Package Status</div>
-            <table class="status-table" id="statusTable">
-                <thead>
-                    <tr>
-                        <th>Status</th>
-                        <th>Place of Activity</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Transport</th>
-                        <th>Voyage No.</th>
-                    </tr>
-                </thead>
-                <tbody id="statusList">
-                    <!-- Dynamic content will be inserted here -->
-                </tbody>
-            </table>
-        </div>
-
-        <div class="footer">
-            <p>Need help? <a href="#">Contact Us</a></p>
-        </div>
-    </div>
-
-    <script>
-        // Fetch the tracking number from the URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const trackingNumber = urlParams.get('trackingNumber') || 'X239072';
-
-        // Display the tracking number in the header
-        document.getElementById('tracking-number').innerText = trackingNumber;
-
-        // Tracking details array with additional information
-        const trackingDetails = [
-            { status: "Gate Out", location: "MONTREAL, QC", date: "2024-10-11", time: "17:58", transport: "Truck", voyageNo: "", progress: 10 },
-            { status: "Arrival in", location: "MONTREAL, QC", date: "2024-10-15", time: "06:44", transport: "Truck", voyageNo: "", progress: 20 },
-            { status: "Loaded", location: "MONTREAL, QC", date: "2024-10-20", time: "08:43", transport: "SPIRIT OF SYDNEY", voyageNo: "01E42", progress: 40 },
-            { status: "Vessel Departed", location: "MONTREAL, QC", date: "2024-10-21", time: "06:18", transport: "SPIRIT OF SYDNEY", voyageNo: "01E42", progress: 50 },
-            { status: "Vessel Arrived", location: "LE HAVRE", date: "2024-11-07", time: "06:24", transport: "SPIRIT OF SYDNEY", voyageNo: "01E42", progress: 60 },
-            { status: "Discharged", location: "LE HAVRE", date: "2024-11-07", time: "08:10", transport: "SPIRIT OF SYDNEY", voyageNo: "01E42", progress: 70 },
-            { status: "Loaded", location: "LE HAVRE", date: "2024-11-09", time: "12:47", transport: "SPIRIT OF SINGAPORE", voyageNo: "2445S", progress: 80 },
-            { status: "Vessel Departed", location: "LE HAVRE", date: "2024-11-09", time: "15:00", transport: "SPIRIT OF SINGAPORE", voyageNo: "2445S", progress: 90 },
-            { status: "Vessel Arrived", location: "TEMA", date: "2024-11-25", time: "03:06", transport: "SPIRIT OF SINGAPORE", voyageNo: "2445S", progress: 95 },
-            { status: "Discharged", location: "TEMA", date: "2024-11-26", time: "09:10", transport: "SPIRIT OF SINGAPORE", voyageNo: "2445S", progress: 100 }
-        ];
-
-        // Update the progress bar and status table
-        const progressBar = document.getElementById('progressBar');
-        const statusList = document.getElementById('statusList');
-
-        trackingDetails.forEach(detail => {
-            // Create a table row for each tracking status
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${detail.status}</td>
-                <td>${detail.location}</td>
-                <td>${detail.date}</td>
-                <td>${detail.time}</td>
-                <td>${detail.transport}</td>
-                <td>${detail.voyageNo || '-'}</td>
-            `;
-            statusList.appendChild(row);
-
-            // Update the progress bar
-            if (detail.progress > parseInt(progressBar.getAttribute('aria-valuenow'))) {
-                progressBar.style.width = detail.progress + '%';
-                progressBar.setAttribute('aria-valuenow', detail.progress);
-                progressBar.innerText = detail.progress + '%';
-            }
-        });
-    </script>
-</body>
-</html>
+    .footer {
+        margin-top: 20px;
+    }
+}
